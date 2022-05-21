@@ -11,6 +11,12 @@ config :faunus,
   ecto_repos: [Faunus.Repo],
   generators: [binary_id: true]
 
+# Database configuration
+config :faunus, Faunus.Repo,
+  migration_primary_key: [type: :binary_id],
+  migration_foreign_key: [type: :binary_id],
+  migration_timestamps: [type: :utc_datetime_usec]
+
 # Configures the endpoint
 config :faunus, FaunusWeb.Endpoint,
   url: [host: "localhost"],
