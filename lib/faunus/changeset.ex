@@ -14,7 +14,7 @@ defmodule Faunus.Changeset do
 
     with {_, first_date} when not is_nil(first_date) <-
            fetch_field(changeset, first_date_field),
-         {_, second_date} when not is_nil(first_date) <-
+         {_, second_date} when not is_nil(second_date) <-
            fetch_field(changeset, second_date_field),
          comparison <- Date.compare(first_date, second_date),
          true <- Enum.member?(criteria, comparison) do

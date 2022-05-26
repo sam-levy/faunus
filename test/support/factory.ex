@@ -3,6 +3,7 @@ defmodule Faunus.Factory do
 
   use Faunus.Factories.{
     AnimalFactory,
+    AnimalDeseaseFactory,
     BreedFactory,
     DeseaseFactory,
     OriginFactory,
