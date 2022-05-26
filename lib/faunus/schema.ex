@@ -4,6 +4,7 @@ defmodule Faunus.Schema do
       use Ecto.Schema
 
       import Ecto.Changeset
+      import Faunus.Changeset
 
       @primary_key {:id, Ecto.UUID, autogenerate: true}
       @foreign_key_type Ecto.UUID

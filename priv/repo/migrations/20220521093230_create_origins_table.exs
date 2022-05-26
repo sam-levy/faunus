@@ -3,9 +3,11 @@ defmodule Faunus.Repo.Migrations.CreateOriginsTable do
 
   def change do
     create table(:origins) do
-      add :name, :string, null: false
+      add :name, :citext, null: false
 
       timestamps()
     end
+
+    create unique_index(:origins, [:name])
   end
 end

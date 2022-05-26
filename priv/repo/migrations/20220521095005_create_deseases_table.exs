@@ -3,9 +3,11 @@ defmodule Faunus.Repo.Migrations.CreateDeseasesTable do
 
   def change do
     create table(:deseases) do
-      add :name, :string, null: false
+      add :name, :citext, null: false
 
       timestamps()
     end
+
+    create unique_index(:deseases, [:name])
   end
 end

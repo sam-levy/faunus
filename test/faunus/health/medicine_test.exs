@@ -5,7 +5,7 @@ defmodule Faunus.Health.MedicineTest do
 
   describe "changeset/2" do
     test "valid attrs" do
-      attrs = %{name: "Ivomec"}
+      attrs = params_for(:medicine)
 
       changeset = Medicine.changeset(attrs)
 
@@ -15,25 +15,29 @@ defmodule Faunus.Health.MedicineTest do
       assert {:ok, %Medicine{}} = Repo.insert(changeset)
     end
 
-    test "invalid attrs" do
-      changeset = Medicine.changeset(%{name: :invalid})
-
-      refute changeset.valid?
-      assert errors_on(changeset) == %{name: ["is invalid"]}
-    end
-
     test "missing required attrs" do
       changeset = Medicine.changeset(%{})
 
-      refute changeset.valid?
       assert errors_on(changeset) == %{name: ["can't be blank"]}
     end
 
     test "string fields bigger than 255 chars" do
-      changeset = Medicine.changeset(%{name: String.duplicate("a", 256)})
+      attrs = params_for(:medicine, name: String.duplicate("a", 256))
 
-      refute changeset.valid?
+      changeset = Medicine.changeset(attrs)
+
       assert errors_on(changeset) == %{name: ["should be at most 255 character(s)"]}
+    end
+
+    test "name citext unique index" do
+      insert(:medicine, name: "Adjuvante Assist")
+      attrs = params_for(:medicine, name: "ADJUVANTE ASSIST")
+
+      assert {:error, changeset} = attrs |> Medicine.changeset() |> Repo.insert()
+
+      assert errors_on(changeset) == %{
+               name: ["has already been taken"]
+             }
     end
   end
 end

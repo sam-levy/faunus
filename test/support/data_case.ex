@@ -18,12 +18,14 @@ defmodule Faunus.DataCase do
 
   using do
     quote do
-      alias Faunus.Repo
-
       import Ecto
       import Ecto.Changeset
       import Ecto.Query
+      import Faunus.Factory
       import Faunus.DataCase
+
+      alias Ecto.UUID
+      alias Faunus.Repo
     end
   end
 

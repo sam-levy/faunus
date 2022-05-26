@@ -11,6 +11,7 @@ defmodule Faunus.Health.Desease do
     target
     |> cast(attrs, [:name])
     |> validate_required([:name])
-    |> validate_length(:name, max: 255)
+    |> validate_max_255_chars(:name)
+    |> unique_constraint(:name)
   end
 end

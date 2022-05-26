@@ -5,7 +5,7 @@ defmodule Faunus.Health.DeseaseTest do
 
   describe "changeset/2" do
     test "valid attrs" do
-      attrs = %{name: "Brucelose"}
+      attrs = params_for(:desease)
 
       changeset = Desease.changeset(attrs)
 
@@ -15,25 +15,29 @@ defmodule Faunus.Health.DeseaseTest do
       assert {:ok, %Desease{}} = Repo.insert(changeset)
     end
 
-    test "invalid attrs" do
-      changeset = Desease.changeset(%{name: :invalid})
-
-      refute changeset.valid?
-      assert errors_on(changeset) == %{name: ["is invalid"]}
-    end
-
     test "missing required attrs" do
       changeset = Desease.changeset(%{})
 
-      refute changeset.valid?
       assert errors_on(changeset) == %{name: ["can't be blank"]}
     end
 
     test "string fields bigger than 255 chars" do
-      changeset = Desease.changeset(%{name: String.duplicate("a", 256)})
+      attrs = params_for(:desease, name: String.duplicate("a", 256))
 
-      refute changeset.valid?
+      changeset = Desease.changeset(attrs)
+
       assert errors_on(changeset) == %{name: ["should be at most 255 character(s)"]}
+    end
+
+    test "name citext unique index" do
+      insert(:desease, name: "Mastite")
+      attrs = params_for(:desease, name: "MASTITE")
+
+      assert {:error, changeset} = attrs |> Desease.changeset() |> Repo.insert()
+
+      assert errors_on(changeset) == %{
+               name: ["has already been taken"]
+             }
     end
   end
 end
