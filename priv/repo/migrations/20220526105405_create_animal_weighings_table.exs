@@ -1,4 +1,4 @@
-defmodule Faunus.Repo.Migrations.CreateAnimalWeighings do
+defmodule Faunus.Repo.Migrations.CreateAnimalWeighingsTable do
   use Ecto.Migration
 
   def change do

@@ -4,6 +4,7 @@ defmodule Faunus.Factory do
   use Faunus.Factories.{
     AnimalFactory,
     AnimalDeseaseFactory,
+    AnimalLogFactory,
     AnimalMedicationFactory,
     AnimalWeighingFactory,
     BreedFactory,
