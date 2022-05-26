@@ -9,6 +9,7 @@ defmodule Faunus.Factory do
     AnimalWeighingFactory,
     BreedFactory,
     DeseaseFactory,
+    HeatFactory,
     OriginFactory,
     MedicineFactory
   }
