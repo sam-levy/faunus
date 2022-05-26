@@ -1,4 +1,4 @@
-defmodule Faunus.Animals.Origin do
+defmodule Faunus.Origins.Origin do
   use Faunus.Schema
 
   schema "origins" do

@@ -1,7 +1,7 @@
-defmodule Faunus.Animals.BreedTest do
+defmodule Faunus.Breeds.BreedTest do
   use Faunus.DataCase, async: true
 
-  alias Faunus.Animals.Breed
+  alias Faunus.Breeds.Breed
 
   describe "changeset/2" do
     test "valid attrs" do

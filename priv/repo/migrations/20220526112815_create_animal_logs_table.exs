@@ -1,4 +1,4 @@
-defmodule Faunus.Repo.Migrations.CreateAnimalLogsTable do
+defmodule Faunus.Repo.Migrations.CreateLogsTable do
   use Ecto.Migration
 
   def change do

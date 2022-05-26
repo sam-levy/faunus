@@ -1,4 +1,4 @@
-defmodule Faunus.Animals.Breed do
+defmodule Faunus.Breeds.Breed do
   use Faunus.Schema
 
   schema "breeds" do

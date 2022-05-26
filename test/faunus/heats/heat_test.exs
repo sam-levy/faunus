@@ -1,32 +1,31 @@
-defmodule Faunus.Animals.AnimalLogTest do
+defmodule Faunus.Heats.HeatTest do
   use Faunus.DataCase, async: true
 
-  alias Faunus.Animals.AnimalLog
+  alias Faunus.Heats.Heat
 
   describe "create_changeset/2" do
     test "valid attrs" do
-      attrs = params_with_assocs(:animal_log)
+      attrs = params_with_assocs(:heat)
 
-      changeset = AnimalLog.create_changeset(attrs)
+      changeset = Heat.create_changeset(attrs)
 
       assert changeset.valid?
       assert changeset.changes == attrs
     end
 
     test "missing required attrs" do
-      changeset = AnimalLog.create_changeset(%{})
+      changeset = Heat.create_changeset(%{})
 
       assert errors_on(changeset) == %{
-               content: ["can't be blank"],
-               date: ["can't be blank"],
+               detected_at: ["can't be blank"],
                animal_id: ["can't be blank"]
              }
     end
 
     test "`animal` assoc constraint" do
-      attrs = params_with_assocs(:animal_log) |> Map.put(:animal_id, UUID.generate())
+      attrs = params_with_assocs(:heat) |> Map.put(:animal_id, UUID.generate())
 
-      {:error, changeset} = attrs |> AnimalLog.create_changeset() |> Repo.insert()
+      {:error, changeset} = attrs |> Heat.create_changeset() |> Repo.insert()
 
       assert errors_on(changeset) == %{
                animal: ["does not exist"]

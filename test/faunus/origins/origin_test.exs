@@ -1,7 +1,7 @@
-defmodule Faunus.Animals.OriginTest do
+defmodule Faunus.Origins.OriginTest do
   use Faunus.DataCase, async: true
 
-  alias Faunus.Animals.Origin
+  alias Faunus.Origins.Origin
 
   describe "changeset/2" do
     test "valid attrs" do

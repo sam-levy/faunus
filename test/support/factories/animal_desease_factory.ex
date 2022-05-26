@@ -5,8 +5,8 @@ defmodule Faunus.Factories.AnimalDeseaseFactory do
 
       def animal_desease_factory do
         %AnimalDesease{
-          detected_at: Faker.Date.between(Faker.Date.backward(60), Faker.Date.backward(30)),
-          healed_at: Faker.Date.between(Faker.Date.backward(15), Faker.Date.backward(7)),
+          detected_at: random_date_between(-60, -30),
+          healed_at: random_date_between(-15, -7),
           animal: build(:animal),
           desease: build(:desease)
         }

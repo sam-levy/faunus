@@ -4,13 +4,19 @@ defmodule Faunus.Factory do
   use Faunus.Factories.{
     AnimalFactory,
     AnimalDeseaseFactory,
-    AnimalLogFactory,
     AnimalMedicationFactory,
-    AnimalWeighingFactory,
     BreedFactory,
     DeseaseFactory,
     HeatFactory,
+    LogFactory,
+    MedicineFactory,
     OriginFactory,
-    MedicineFactory
+    WeighingFactory
   }
+
+  defp random_date_between(start, finish) do
+    today = Date.utc_today()
+
+    Faker.Date.between(Date.add(today, start), Date.add(today, finish))
+  end
 end

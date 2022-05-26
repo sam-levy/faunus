@@ -5,19 +5,8 @@ defmodule Faunus.Factories.DeseaseFactory do
 
       def desease_factory do
         %Desease{
-          name: Enum.random(deseases())
+          name: sequence("doença")
         }
-      end
-
-      def deseases do
-        [
-          "Mastite",
-          "Febre Aftosa",
-          "Brucelose",
-          "Babesiose",
-          "Clostridiose",
-          "Tuberculose"
-        ]
       end
     end
   end

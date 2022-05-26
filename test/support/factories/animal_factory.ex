@@ -9,7 +9,7 @@ defmodule Faunus.Factories.AnimalFactory do
           gender: Enum.random([:male, :female]),
           is_currently_owned: true,
           internal_code: Faker.Code.iban() |> String.slice(0..6),
-          birth_date: Faker.Date.between(Faker.Date.backward(600), Faker.Date.backward(2000)),
+          birth_date: random_date_between(-600, -2000),
           breed: build(:breed),
           origin: build(:origin)
         }

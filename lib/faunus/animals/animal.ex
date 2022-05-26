@@ -1,7 +1,8 @@
 defmodule Faunus.Animals.Animal do
   use Faunus.Schema
 
-  alias Faunus.Animals.{Breed, Origin}
+  alias Faunus.Breeds.Breed
+  alias Faunus.Origins.Origin
 
   schema "animals" do
     field :name, :string

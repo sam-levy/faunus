@@ -1,17 +1,18 @@
-defmodule Faunus.Animals.Heat do
+defmodule Faunus.Logs.Log do
   use Faunus.Schema
 
   alias Faunus.Animals.Animal
 
-  schema "animal_heats" do
-    field :detected_at, :date
+  schema "animal_logs" do
+    field :content, :string
+    field :date, :date
 
     belongs_to :animal, Animal
 
     timestamps()
   end
 
-  @required_fields [:detected_at, :animal_id]
+  @required_fields [:content, :date, :animal_id]
   @optional_fields []
 
   def create_changeset(%{} = attrs) do

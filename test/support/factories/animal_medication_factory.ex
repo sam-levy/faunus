@@ -6,7 +6,7 @@ defmodule Faunus.Factories.AnimalMedicationFactory do
       def animal_medication_factory do
         %AnimalMedication{
           dose: Faker.random_between(1, 20),
-          given_at: Faker.Date.between(Faker.Date.backward(15), Faker.Date.backward(7)),
+          given_at: random_date_between(-15, -7),
           animal: build(:animal),
           medicine: build(:medicine)
         }
