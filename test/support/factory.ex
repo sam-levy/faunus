@@ -5,6 +5,7 @@ defmodule Faunus.Factory do
     AnimalFactory,
     AnimalDeseaseFactory,
     AnimalMedicationFactory,
+    AnimalWeighingFactory,
     BreedFactory,
     DeseaseFactory,
     OriginFactory,
