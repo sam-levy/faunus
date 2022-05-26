@@ -3,7 +3,7 @@ defmodule Faunus.Heats.Heat do
 
   alias Faunus.Animals.Animal
 
-  schema "animal_heats" do
+  schema "heats" do
     field :detected_at, :date
 
     belongs_to :animal, Animal

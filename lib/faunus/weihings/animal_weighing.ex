@@ -3,7 +3,7 @@ defmodule Faunus.Weighings.Weighing do
 
   alias Faunus.Animals.Animal
 
-  schema "animal_weighings" do
+  schema "weighings" do
     field :measure_in_kg, :integer
     field :date, :date
 
