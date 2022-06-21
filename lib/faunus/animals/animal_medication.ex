@@ -14,13 +14,12 @@ defmodule Faunus.Animals.AnimalMedication do
     timestamps()
   end
 
-  @required_fields [:dose, :given_at, :animal_id, :medicine_id]
-  @optional_fields []
+  @fields [:dose, :given_at, :animal_id, :medicine_id]
 
   def create_changeset(%{} = attrs) do
     %__MODULE__{}
-    |> cast(attrs, @required_fields ++ @optional_fields)
-    |> validate_required(@required_fields)
+    |> cast(attrs, @fields)
+    |> validate_required(@fields)
     |> assoc_constraint(:animal)
     |> assoc_constraint(:medicine)
   end

@@ -12,13 +12,12 @@ defmodule Faunus.Weighings.Weighing do
     timestamps()
   end
 
-  @required_fields [:measure_in_kg, :date, :animal_id]
-  @optional_fields []
+  @fields [:measure_in_kg, :date, :animal_id]
 
   def create_changeset(%{} = attrs) do
     %__MODULE__{}
-    |> cast(attrs, @required_fields ++ @optional_fields)
-    |> validate_required(@required_fields)
+    |> cast(attrs, @fields)
+    |> validate_required(@fields)
     |> validate_number(:measure_in_kg, greater_than: 0)
     |> assoc_constraint(:animal)
   end

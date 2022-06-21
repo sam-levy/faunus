@@ -12,13 +12,12 @@ defmodule Faunus.Logs.Log do
     timestamps()
   end
 
-  @required_fields [:content, :date, :animal_id]
-  @optional_fields []
+  @fields [:content, :date, :animal_id]
 
   def create_changeset(%{} = attrs) do
     %__MODULE__{}
-    |> cast(attrs, @required_fields ++ @optional_fields)
-    |> validate_required(@required_fields)
+    |> cast(attrs, @fields)
+    |> validate_required(@fields)
     |> assoc_constraint(:animal)
   end
 end
