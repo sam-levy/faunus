@@ -33,8 +33,6 @@ defmodule Faunus.Changeset do
   def validate_dates(changeset, _, _, _), do: changeset
 
   defp join_criteria(criteria, dict) do
-    criteria
-    |> Enum.map(fn item -> Map.get(dict, item) end)
-    |> Enum.join(" or ")
+    Enum.map_join(criteria, " or ", fn item -> Map.get(dict, item) end)
   end
 end
