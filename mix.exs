@@ -10,7 +10,14 @@ defmodule Faunus.MixProject do
       compilers: Mix.compilers(),
       start_permanent: Mix.env() == :prod,
       aliases: aliases(),
-      deps: deps()
+      deps: deps(),
+      test_coverage: [tool: ExCoveralls],
+      preferred_cli_env: [
+        coveralls: :test,
+        "coveralls.detail": :test,
+        "coveralls.post": :test,
+        "coveralls.html": :test
+      ]
     ]
   end
 
@@ -47,6 +54,7 @@ defmodule Faunus.MixProject do
 
       # test/dev
       {:credo, "~> 1.6", only: [:test, :dev], runtime: false},
+      {:excoveralls, "~> 0.10", only: :test},
       {:ex_machina, "~> 2.7.0", only: :test},
       {:faker, "~> 0.17", only: [:test, :dev]}
     ]

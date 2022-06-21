@@ -1,0 +1,9 @@
+{
+  "skip_files": [
+    "lib/faunus/application.ex",
+    "lib/faunus_web.ex",
+    "lib/faunus_web/router.ex",
+    "lib/faunus_web/telemetry.ex",
+    "lib/faunus_web/views/error_helpers.ex"
+  ]
+}
