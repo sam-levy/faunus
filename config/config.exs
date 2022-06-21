@@ -13,8 +13,8 @@ config :faunus,
 
 # Database configuration
 config :faunus, Faunus.Repo,
-  migration_primary_key: [type: :binary_id],
-  migration_foreign_key: [type: :binary_id],
+  migration_primary_key: [type: :uuid],
+  migration_foreign_key: [type: :uuid],
   migration_timestamps: [type: :utc_datetime_usec]
 
 # Configures the endpoint
